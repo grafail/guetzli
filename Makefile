@@ -35,6 +35,8 @@ ifneq (,$(guetzli_config))
 	@${MAKE} --no-print-directory -C . -f guetzli.make config=$(guetzli_config)
 endif
 
+test:
+	mkdir -p test_dir && TMPDIR=test_dir ./tests/smoke_test.sh
 clean:
 	@${MAKE} --no-print-directory -C . -f guetzli_static.make clean
 	@${MAKE} --no-print-directory -C . -f guetzli.make clean
@@ -51,5 +53,6 @@ help:
 	@echo "   clean"
 	@echo "   guetzli_static"
 	@echo "   guetzli"
+	@echo "   test"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"
